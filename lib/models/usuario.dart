@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class Usuario {
   int? id;
   String? userName;
@@ -7,7 +5,7 @@ class Usuario {
   int? following;
   int? cantPosts;
   String? urlProfile;
-  Array? posts;
+  List? posts;
   String? name;
 
   Usuario({
