@@ -50,8 +50,7 @@ class MyApp extends StatelessWidget {
                     prefixIconData: Icons.person,
                     isMyController: true,
                     controller: _controllerUSER,
-                    hintText: 'Ingresa tu Username',
-                    onChanged: (String value) {},
+                    hintText: 'Ingresa tu Username'
                   ),
                 ),
                 Padding(
@@ -67,10 +66,8 @@ class MyApp extends StatelessWidget {
                       color: const Color.fromARGB(255, 176, 176, 176),
                       suffixIconData: Icons.remove_red_eye_outlined,
                       isMyController: true,
+                      obscureText: true,
                       controller: _controllerPASSWORD,
-                      onSuffixIconTap: () {
-                        print('click');
-                      },
                       hintText: 'Ingresa tu Contraseña'),
                 ),
                 FadeInLeft(
@@ -85,17 +82,14 @@ class MyApp extends StatelessWidget {
                     fontSize: 18,
                     hasBorder: false,
                     onPressed: () {
-                      if (_controllerUSER.text.isEmpty ||
-                          _controllerPASSWORD.text.isEmpty) {
+                      if (_controllerUSER.text.isEmpty || _controllerPASSWORD.text.isEmpty) {
                         Global.mensaje(
                             context, 'Debe rellenar todos los campos', 'Info');
                         return;
                       } else {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    Home(userLoggedd: _controllerUSER.text)));
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) =>
+                              Home(userLoggedd: _controllerUSER.text)));
                         return;
                       }
                     },

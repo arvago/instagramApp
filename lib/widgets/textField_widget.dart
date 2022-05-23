@@ -19,6 +19,7 @@ class TextFieldWidget  extends StatelessWidget {
   final int maxLong;
   final Color? textColor;
   final void Function()? onSuffixIconTap;
+  final void Function()? onPrefixIconTap;
   final bool? isMaxLong;
   final bool? isFilled;
   final double borderRadius;
@@ -46,6 +47,7 @@ class TextFieldWidget  extends StatelessWidget {
     this.borderColor,
     this.maxLong = 50,
     this.onSuffixIconTap,
+    this.onPrefixIconTap,
     this.isMaxLong = false,
     this.isFilled = false,
     this.controller,
@@ -62,7 +64,6 @@ class TextFieldWidget  extends StatelessWidget {
     }
 
     return TextFormField(
-      maxLines: maxLines,
       maxLength: isMaxLong == false ? null : maxLong,
       controller: isMyController == false ? null : controller,
       textInputAction: TextInputAction.done,
@@ -95,12 +96,14 @@ class TextFieldWidget  extends StatelessWidget {
           ),
         ),
         labelText: hintText,
-        prefixIcon: isPrefixIcon == false ? null : 
-         Icon(
+        prefixIcon: isPrefixIcon == false ? null : GestureDetector(
+          onTap: onPrefixIconTap,
+          child: Icon(
             prefixIconData,
             size: 30,
             color: color
           ),
+        ),         
         suffixIcon: isSuffixIcon == false ? null : GestureDetector(
           onTap: onSuffixIconTap,
           child: Icon(
